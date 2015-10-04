@@ -7,7 +7,8 @@ ifeq ($(TARGET), sunos)
 	CFLAGS += -D_PTHREADS -D_POSIX_C_SOURCE=200112L
 	LIBS   += -lsocket
 else ifeq ($(TARGET), darwin)
-	LDFLAGS += -pagezero_size 10000 -image_base 100000000
+	LDFLAGS += -pagezero_size 10000 -image_base 100000000 -L/opt/local/lib
+	CFLAGS += -I/opt/local/include
 else ifeq ($(TARGET), linux)
 	CFLAGS  += -D_POSIX_C_SOURCE=200112L -D_BSD_SOURCE
 	LIBS    += -ldl
